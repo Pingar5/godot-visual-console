@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://addons/visual-console/components/CommandPalette/CommandPalette.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/visual-console/assets/high-res/AnonymousPro-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://addons/visual-console/PixelTheme.tres" type="Theme" id=3]
+[ext_resource path="res://addons/visual-console/components/argument_editors/BooleanArgumentEditor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/visual-console/components/argument_editors/NumberArgumentEditor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/visual-console/components/argument_editors/StringArgumentEditor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/visual-console/components/argument_editors/OptionSetArgumentEditor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://addons/visual-console/assets/pixel/Kenney Pixel.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 8.0
+content_margin_right = 6.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.239216, 0.196078, 0.270588, 1 )
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=1]
+size = 6
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 30.0
+content_margin_right = 6.0
+bg_color = Color( 0.239216, 0.196078, 0.270588, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 5
+font_data = ExtResource( 2 )
+
+[node name="PixelCommandPalette" instance=ExtResource( 1 )]
+theme = ExtResource( 3 )
+
+[node name="SearchBar" parent="NavigationPane/VBoxContainer" index="0"]
+margin_bottom = 8.0
+size_flags_horizontal = 3
+custom_constants/minimum_spaces = 5
+custom_styles/read_only = SubResource( 5 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="MagnifyingGlass" parent="NavigationPane/VBoxContainer/SearchBar" index="2"]
+margin_left = 2.0
+margin_right = 6.0
+margin_bottom = 0.0
+rect_min_size = Vector2( 4, 4 )
+
+[node name="Placeholder" parent="NavigationPane/VBoxContainer/SearchBar" index="3"]
+margin_left = 8.0
+custom_fonts/font = SubResource( 1 )
+
+[node name="Panel" parent="NavigationPane/VBoxContainer" index="1"]
+margin_top = 8.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 0, 1 )
+
+[node name="Listings" parent="NavigationPane/VBoxContainer" index="2"]
+margin_top = 9.0
+
+[node name="Title" parent="CommandPane" index="0"]
+margin_right = -0.200005
+margin_bottom = 18.0
+rect_min_size = Vector2( 0, 18 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="Name" parent="CommandPane/Title" index="0"]
+custom_fonts/font = SubResource( 3 )
+
+[node name="Arguments" parent="CommandPane" index="1"]
+margin_top = 18.0
+margin_bottom = -20.0
+
+[node name="VBoxContainer" parent="CommandPane/Arguments" index="0"]
+margin_bottom = 74.0
+
+[node name="BooleanArgumentEditor" parent="CommandPane/Arguments/VBoxContainer" index="0" instance=ExtResource( 4 )]
+margin_top = 0.0
+margin_right = 69.0
+margin_bottom = 5.0
+
+[node name="NumberArgument" parent="CommandPane/Arguments/VBoxContainer" index="1" instance=ExtResource( 5 )]
+margin_top = 12.0
+margin_right = 69.0
+margin_bottom = 20.0
+
+[node name="OptionSetArgument" parent="CommandPane/Arguments/VBoxContainer" index="2" instance=ExtResource( 7 )]
+margin_top = 27.0
+margin_right = 69.0
+margin_bottom = 47.0
+
+[node name="StringArgument" parent="CommandPane/Arguments/VBoxContainer" index="3" instance=ExtResource( 6 )]
+margin_top = 54.0
+margin_right = 69.0
+margin_bottom = 62.0
+
+[node name="Buttons" parent="CommandPane" index="2"]
+margin_top = -20.0
+custom_constants/separation = 1
+
+[node name="Cancel" parent="CommandPane/Buttons" index="0"]
+margin_right = 42.0
+margin_bottom = 20.0
+
+[node name="Submit" parent="CommandPane/Buttons" index="1"]
+margin_left = 43.0
+margin_right = 85.0
+margin_bottom = 20.0

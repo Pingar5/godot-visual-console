@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/visual-console/components/argument_editors/StringArgumentEditor.gd" type="Script" id=3]
+
+[node name="StringArgument" type="HBoxContainer"]
+margin_right = 364.0
+margin_bottom = 37.0
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = 11.0
+margin_right = 75.0
+margin_bottom = 25.0
+text = "Text Option"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 79.0
+margin_right = 364.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+text = "Example Text"
+
+[connection signal="text_changed" from="LineEdit" to="." method="on_text_changed"]

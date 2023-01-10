@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/visual-console/components/argument_editors/OptionSetArgumentEditor.gd" type="Script" id=2]
+
+[node name="OptionSetArgument" type="HBoxContainer"]
+margin_right = 364.0
+margin_bottom = 39.0
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = 12.0
+margin_right = 39.0
+margin_bottom = 26.0
+text = "Target"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_left = 43.0
+margin_right = 364.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+
+[connection signal="item_selected" from="OptionButton" to="." method="on_item_selected"]
